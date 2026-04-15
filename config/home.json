@@ -1,0 +1,16 @@
+{
+  "identity": {
+    "name": "George P. Burdell",
+    "name_display": "george p. burdell",
+    "year": 2026
+  },
+  "hero": {
+    "headline": "George P. Burdell",
+    "tagline": "student · tinkerer · ramblin' wreck"
+  },
+  "links": {
+    "email": "gpburdell@gatech.edu",
+    "github": "https://github.com/gpburdell",
+    "linkedin": "https://linkedin.com/in/gpburdell"
+  }
+}
