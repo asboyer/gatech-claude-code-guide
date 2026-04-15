@@ -29,7 +29,10 @@ Before doing anything destructive, confirm the environment is sane. Each of thes
 2. **`gh` is installed and authed.** `gh auth status` succeeds. If not, tell the user to run `gh auth login` and stop.
 3. **There are changes to ship.** `git status --porcelain` is non-empty. If empty, tell the user "nothing to commit — already clean" and stop. Don't open an empty PR.
 4. **Currently on `master`** (or whatever the project's default is — `git remote show origin | grep "HEAD branch"` confirms). If the user is already on a feature branch, ask whether to push that one as-is or branch off it. Don't silently rebase.
-5. **`master` is up to date with origin.** `git fetch origin master` then check if local `master` is behind. If behind, tell the user and ask whether to pull first — a stale base makes a noisy PR.
+5. **Local `master` is in sync with `origin/master` in *both* directions.** `git fetch origin master`, then `git rev-list --left-right --count master...origin/master` (output: `<ahead> <behind>`).
+   - **Behind > 0**: a stale base makes a noisy PR. Tell the user and ask whether to `git pull` first.
+   - **Ahead > 0**: local master has unpushed commits. This is the more dangerous case for the `auto` flow, because after the squash merge lands, those local commits will be on a divergent branch from `origin/master` and the post-merge `git pull` step will fail. Stop and ask the user to choose: (a) push the local commits to master first (`git push origin master`) so the squash merge will be a clean fast-forward, or (b) accept that the local commits are about to be subsumed by the squash merge (true when the feature branch was created off local master, so the squash already contains those changes) and authorize the post-merge `git reset --hard origin/master` cleanup in advance.
+   - **Both zero**: clean, proceed.
 6. **No secrets staged.** Quick scan of changed files for filenames like `.env`, `*.key`, `credentials*`, `*.pem`, and grep for obvious patterns (`AKIA`, `sk-`, `ghp_`, `BEGIN PRIVATE KEY`). If anything matches, stop and warn — never include these in a commit without explicit user confirmation.
 
 ## Session close (run before any git work)
@@ -197,15 +200,34 @@ Only run this branch of the skill if the user passed `merge`, `auto`, or `auto m
 
 2. **Tell the user what happened**: "Auto-merge enabled. GitHub will merge it as soon as checks pass." If checks already passed (or there are none) and it merged immediately, say so.
 
-3. **Switch back to master and sync**:
+3. **Switch back to master and reconcile.** This is the part that bit us before — `gh pr merge --auto` may merge synchronously when there are no required checks, and then handing local master a divergent state. Handle it carefully:
+
    ```bash
    git checkout master
-   git pull origin master
-   git branch -d <branch-name>   # delete local branch — safe because it was merged
+   git fetch origin master
    ```
-   If `git branch -d` fails because the merge hasn't actually happened yet (auto-merge is queued, not done), skip the delete and tell the user the local branch is still around for cleanup later. Don't force-delete (`-D`) — that's destructive if something went wrong.
 
-4. **Confirm final state**: `git status` and `git log -1 --oneline` so the user can see they're on a clean master at the merged commit.
+   Then check the relationship between local `master` and `origin/master` with `git rev-list --left-right --count master...origin/master` (output: `<ahead> <behind>`):
+
+   - **`0 0`** — already in sync, nothing to do. Move on.
+   - **`0 N` (behind only)** — clean fast-forward. Run `git pull --ff-only origin master`.
+   - **`N 0` (ahead only)** — auto-merge probably hasn't landed yet (still queued waiting on checks). Tell the user the PR is queued, leave local master as-is, skip the branch delete, and stop. Don't try to "fix" the local state — there's nothing to fix.
+   - **`M N` (diverged, both nonzero)** — the squash merge landed on origin while local master still has the commits the branch was built from. This is the expected state after squash-merging a feature branch that was created off an unpushed local master. Verify it's the safe case before doing anything destructive:
+
+     ```bash
+     # For each file local master has that origin/master doesn't share, check it's actually present and identical upstream:
+     git diff <local-master-base> origin/master -- <files-only-on-local>
+     ```
+
+     The simpler check: `git diff master origin/master --stat` — if every line of the diff shows files being *added* (no deletions or modifications of files local master introduced), the squash absorbed everything cleanly. Confirm with the user, citing the diff, then run `git reset --hard origin/master`. The dropped commits stay in the reflog for 90 days.
+
+     If the diff shows local master has files origin/master doesn't, **stop and ask the user.** Don't reset — there's real local-only work to preserve.
+
+4. **Clean up the local feature branch** if it still exists: `git branch -d <branch-name>`. The `-d` (lowercase) refuses to delete unmerged branches, which is the safety net we want. If gh already deleted it as part of `--delete-branch`, this fails silently — fine. Never use `-D`.
+
+5. **Prune stale remote-tracking refs**: `git remote prune origin`. The `--delete-branch` flag deletes the remote branch but leaves the local `remotes/origin/<branch>` ref dangling until pruned.
+
+6. **Confirm final state**: `git status` (working tree clean, on `master`, in sync with `origin/master`) and `git log -1 --oneline` (HEAD is the squash commit) so the user can see exactly where they landed.
 
 ## Output to the user
 
