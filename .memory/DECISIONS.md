@@ -30,6 +30,24 @@
 **Decision:** Create `index.html`, `resume.html`, and `projects.html` in Phase 0, each with the full shared boilerplate (nav, footer, skip link, `aria-current` set correctly). `style.css` ships with labeled empty page-section blocks (`6. PAGE SECTIONS — HOME`, `7. RESUME`, `8. PROJECTS`) so each phase owns exactly one CSS block and one HTML file.
 **Reasoning:** Without this, two parallel sessions on Phases 2 and 3 would both edit `style.css` in undefined regions and merge-conflict. The labeled blocks make the ownership contract explicit. Cost is minimal — empty `<main>` with a TODO comment.
 
+## D-006: Resume page includes name + contact header
+**Session:** 2026-04-16-0000-resume-page.md
+**Context:** The resume PDF had a name/contact block at the top. Question was whether to include it on the web page since the nav already shows the name.
+**Decision:** Include the header — name, phone, email, and LinkedIn — centered above the sections.
+**Reasoning:** The page may be printed or screenshotted directly (bypassing the nav), so the header makes the resume self-contained. Mirrors standard resume convention.
+
+## D-007: Projects section excluded from resume page
+**Session:** 2026-04-16-0000-resume-page.md
+**Context:** The resume PDF includes a "Projects & Research" section (RoboJackets, GT IVA Lab).
+**Decision:** Exclude projects from `resume.html`. They will be covered in Phase 3 on `projects.html`.
+**Reasoning:** Avoids duplicating content across two pages. The projects page is the canonical home for project detail; the resume page focuses on education, experience, and skills.
+
+## D-008: `<dl>` used for Technical Skills
+**Session:** 2026-04-16-0000-resume-page.md
+**Context:** Skills are grouped by category (Programming Languages, Frameworks, AI/ML) with a list of items per category.
+**Decision:** Use `<dl>` with `<div class="resume-skills__group">` wrappers, `<dt>` for category name, `<dd>` for the items string.
+**Reasoning:** A description list is the correct semantic element for term-definition pairs. More meaningful to screen readers than a nested `<ul>`, and renders inline naturally with flex layout.
+
 ## D-005: Per-page configs as the single source of truth for content
 **Session:** 2026-04-15-0157-scaffolding.md
 **Context:** User asked for user-identifying info to live in a config file so a future resume-loader phase can swap real data in without rewriting HTML. Then refined: each page should have its own config.
