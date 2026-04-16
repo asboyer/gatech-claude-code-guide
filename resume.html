@@ -23,7 +23,79 @@
   </header>
 
   <main id="main" class="container">
-    <!-- TODO Phase 2: build resume content from config/resume.json -->
+
+    <header class="resume-header">
+      <h1 class="resume-header__name">George P. Burdell</h1>
+      <p class="resume-header__contact">
+        <a href="tel:1234567899">123-456-7899</a>
+        <span aria-hidden="true">·</span>
+        <a href="mailto:buzz@gatech.edu">buzz@gatech.edu</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://linkedin.com/in/georgepburdell/">linkedin.com/in/georgepburdell/</a>
+      </p>
+    </header>
+
+    <section class="resume-section" aria-labelledby="resume-education">
+      <h2 id="resume-education">Education</h2>
+      <article class="resume-entry">
+        <header class="resume-entry__header">
+          <h3 class="resume-entry__org">Georgia Institute of Technology</h3>
+          <time class="resume-entry__date">May 2026</time>
+        </header>
+        <p class="resume-entry__title">Bachelor of Science in Computer Science</p>
+        <ul class="resume-entry__bullets">
+          <li><strong>Relevant Coursework:</strong> Machine Learning, Computer Vision, Prototyping Intelligent Devices, Natural Language Processing, Introduction to AI, Data Structures &amp; Algorithms</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="resume-section" aria-labelledby="resume-experience">
+      <h2 id="resume-experience">Work Experience</h2>
+
+      <article class="resume-entry">
+        <header class="resume-entry__header">
+          <h3 class="resume-entry__org">Amazon Web Services (AWS)</h3>
+          <time class="resume-entry__date">May 2025 – Aug 2025</time>
+        </header>
+        <p class="resume-entry__title">Software Development Engineering Intern</p>
+        <ul class="resume-entry__bullets">
+          <li>Reduced resolution time of 500+ tickets by 50%+ by developing a multi-AI-agent operations tool in Python for core Amazon Q service using AWS Strands Agents that autonomously finds the root cause of tickets cut to service.</li>
+          <li>Designed tools for agents using the AWS SDK and MCP servers, creating automations for 15+ developers that simplify service maintenance and provide immediate information about the team's code, design, and current status.</li>
+          <li>Scaled multi-agent system to become an internal service using AWS Lambda, achieving a 95% satisfaction as determined by custom CloudWatch metrics, all while working alongside developers to improve the agents' capabilities.</li>
+        </ul>
+      </article>
+
+      <article class="resume-entry">
+        <header class="resume-entry__header">
+          <h3 class="resume-entry__org">Georgia Tech School of Computing Instruction</h3>
+          <time class="resume-entry__date">Jan 2025 – Present</time>
+        </header>
+        <p class="resume-entry__title">Undergraduate Teaching Assistant – Design and Analysis of Algorithms (CS 3510)</p>
+        <ul class="resume-entry__bullets">
+          <li>Enhance understanding of advanced algorithm concepts for 500+ students by hosting office hours, answering questions on discussion platform, and contributing to exam review sessions, resulting in increased student performance.</li>
+          <li>Deliver targeted, actionable feedback on homework and exams alongside 20+ TAs, emphasizing efficient algorithm design principles and problem-solving skills, leading to improvements in student exam readiness.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="resume-section" aria-labelledby="resume-skills">
+      <h2 id="resume-skills">Technical Skills</h2>
+      <dl class="resume-skills">
+        <div class="resume-skills__group">
+          <dt>Programming Languages</dt>
+          <dd>Python, Java, C++, C, JavaScript</dd>
+        </div>
+        <div class="resume-skills__group">
+          <dt>Frameworks, Platforms &amp; Tools</dt>
+          <dd>React, AWS (Lambda, EC2, DynamoDB, S3), NumPy, REST, ROS 2, Git, CI/CD, JSON, XML</dd>
+        </div>
+        <div class="resume-skills__group">
+          <dt>AI/ML</dt>
+          <dd>PyTorch, OpenCV, Strands Agents, Model Context Protocol, Neural Networks, Transformers, Vision-Language Models</dd>
+        </div>
+      </dl>
+    </section>
+
   </main>
 
   <footer class="site-footer">

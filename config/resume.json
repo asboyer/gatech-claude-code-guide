@@ -1,6 +1,59 @@
 {
-  "summary": "",
-  "experience": [],
-  "education": [],
-  "skills": []
+  "identity": {
+    "name": "George P. Burdell",
+    "phone": "123-456-7899",
+    "email": "buzz@gatech.edu",
+    "linkedin_label": "linkedin.com/in/georgepburdell/",
+    "linkedin_url": "https://linkedin.com/in/georgepburdell/"
+  },
+  "education": [
+    {
+      "institution": "Georgia Institute of Technology",
+      "degree": "Bachelor of Science in Computer Science",
+      "date": "May 2026",
+      "coursework": [
+        "Machine Learning",
+        "Computer Vision",
+        "Prototyping Intelligent Devices",
+        "Natural Language Processing",
+        "Introduction to AI",
+        "Data Structures & Algorithms"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Amazon Web Services (AWS)",
+      "title": "Software Development Engineering Intern",
+      "dates": "May 2025 – Aug 2025",
+      "bullets": [
+        "Reduced resolution time of 500+ tickets by 50%+ by developing a multi-AI-agent operations tool in Python for core Amazon Q service using AWS Strands Agents that autonomously finds the root cause of tickets cut to service.",
+        "Designed tools for agents using the AWS SDK and MCP servers, creating automations for 15+ developers that simplify service maintenance and provide immediate information about the team's code, design, and current status.",
+        "Scaled multi-agent system to become an internal service using AWS Lambda, achieving a 95% satisfaction as determined by custom CloudWatch metrics, all while working alongside developers to improve the agents' capabilities."
+      ]
+    },
+    {
+      "company": "Georgia Tech School of Computing Instruction",
+      "title": "Undergraduate Teaching Assistant – Design and Analysis of Algorithms (CS 3510)",
+      "dates": "Jan 2025 – Present",
+      "bullets": [
+        "Enhance understanding of advanced algorithm concepts for 500+ students by hosting office hours, answering questions on discussion platform, and contributing to exam review sessions, resulting in increased student performance.",
+        "Deliver targeted, actionable feedback on homework and exams alongside 20+ TAs, emphasizing efficient algorithm design principles and problem-solving skills, leading to improvements in student exam readiness."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": "Python, Java, C++, C, JavaScript"
+    },
+    {
+      "category": "Frameworks, Platforms & Tools",
+      "items": "React, AWS (Lambda, EC2, DynamoDB, S3), NumPy, REST, ROS 2, Git, CI/CD, JSON, XML"
+    },
+    {
+      "category": "AI/ML",
+      "items": "PyTorch, OpenCV, Strands Agents, Model Context Protocol, Neural Networks, Transformers, Vision-Language Models"
+    }
+  ]
 }
