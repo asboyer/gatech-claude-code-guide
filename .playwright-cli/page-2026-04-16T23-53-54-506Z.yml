@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - navigation "Primary" [ref=e4]:
+      - link "george p. burdell" [ref=e5] [cursor=pointer]:
+        - /url: index.html
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - link "home" [ref=e8] [cursor=pointer]:
+            - /url: index.html
+        - listitem [ref=e9]:
+          - link "resume" [ref=e10] [cursor=pointer]:
+            - /url: resume.html
+        - listitem [ref=e11]:
+          - link "projects" [ref=e12] [cursor=pointer]:
+            - /url: projects.html
+  - main [ref=e13]:
+    - region "George P. Burdell" [ref=e14]:
+      - heading "George P. Burdell" [level=1] [ref=e15]
+      - paragraph [ref=e16]: student · tinkerer · ramblin' wreck
+      - list [ref=e17]:
+        - listitem [ref=e18]:
+          - link "email" [ref=e19] [cursor=pointer]:
+            - /url: mailto:gpburdell@gatech.edu
+        - listitem [ref=e20]:
+          - link "github" [ref=e21] [cursor=pointer]:
+            - /url: https://github.com/gpburdell
+        - listitem [ref=e22]:
+          - link "linkedin" [ref=e23] [cursor=pointer]:
+            - /url: https://linkedin.com/in/gpburdell
+    - region "about" [ref=e24]:
+      - heading "about" [level=2] [ref=e25]
+      - paragraph [ref=e26]: CS senior at Georgia Tech graduating May 2026. I build things at the intersection of systems and ML — from multi-agent AWS tools to robot perception pipelines. Currently a TA for CS 3510 (Algorithms).
+    - navigation "Site sections" [ref=e27]:
+      - link "resume experience, education & skills" [ref=e28] [cursor=pointer]:
+        - /url: resume.html
+        - strong [ref=e29]: resume
+        - generic [ref=e30]: experience, education & skills
+      - link "projects things I've built" [ref=e31] [cursor=pointer]:
+        - /url: projects.html
+        - strong [ref=e32]: projects
+        - generic [ref=e33]: things I've built
+    - region "contact me" [ref=e34]:
+      - heading "contact me" [level=2] [ref=e35]
+      - generic [ref=e36]:
+        - generic [ref=e37]: name
+        - textbox "name" [ref=e38]:
+          - /placeholder: your name
+        - generic [ref=e39]: email
+        - textbox "email" [ref=e40]:
+          - /placeholder: you@example.com
+        - generic [ref=e41]: message
+        - textbox "message" [ref=e42]:
+          - /placeholder: what's on your mind?
+        - button "send message" [ref=e43] [cursor=pointer]
+  - contentinfo [ref=e44]:
+    - generic [ref=e45]: © 2026 George P. Burdell

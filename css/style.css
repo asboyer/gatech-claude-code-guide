@@ -271,7 +271,82 @@ main {
    6. PAGE SECTIONS — HOME        (Phase 1 owns this block)
    ============================================================ */
 
-/* Empty in Phase 0. Phase 1 adds .home-* rules here. */
+/* Hero */
+.home-hero { padding: var(--space-xl) 0; }
+.home-hero__name { font-size: clamp(1.8rem, 5vw, 3rem); margin: 0 0 var(--space-sm); }
+.home-hero__tagline { color: var(--fg-muted); margin: 0 0 var(--space-md); }
+.home-hero__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.home-hero__links a { color: var(--accent); text-decoration: none; }
+.home-hero__links a:hover { text-decoration: underline; }
+
+/* About */
+.home-about { padding: var(--space-lg) 0; border-top: var(--border); }
+.home-about h2 { margin-bottom: var(--space-sm); }
+
+/* Page nav cards */
+.home-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+  border-top: var(--border);
+}
+.home-pages__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border: var(--border);
+  color: var(--fg);
+  text-decoration: none;
+}
+.home-pages__card:hover { border-color: var(--accent); color: var(--accent); }
+.home-pages__card strong { font-size: 1.1rem; }
+.home-pages__card span { color: var(--fg-muted); font-size: 0.9rem; }
+
+/* Contact form */
+.home-contact { padding: var(--space-lg) 0; border-top: var(--border); }
+.home-contact h2 { margin-bottom: var(--space-md); }
+.home-contact__form {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: var(--measure);
+}
+.home-contact__form label { font-size: 0.9rem; color: var(--fg-muted); }
+.home-contact__form input,
+.home-contact__form textarea {
+  width: 100%;
+  padding: var(--space-sm);
+  background: var(--bg-soft);
+  border: var(--border);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  resize: vertical;
+}
+.home-contact__form input:focus,
+.home-contact__form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.home-contact__form button {
+  justify-self: start;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.home-contact__form button:hover { opacity: 0.85; }
 
 /* ============================================================
    7. PAGE SECTIONS — RESUME      (Phase 2 owns this block)

@@ -23,6 +23,7 @@ A three-page personal website (home, resume, projects) built with pure HTML and 
 - Navigation to Resume and Projects pages
 - Social or contact links
 - Any hero or visual treatment
+- Mockup Contact Me form that is not functional but has fields to be filled out and a button to submit the form
 
 **Done when:** `index.html` is complete, responsive, and links point to `resume.html` and `projects.html` (even if those don't exist yet).
 

@@ -23,8 +23,49 @@
   </header>
 
   <main id="main" class="container">
-    <h1>George P. Burdell</h1>
-    <p>student · tinkerer · ramblin' wreck</p>
+
+    <section class="home-hero" aria-labelledby="hero-heading">
+      <h1 id="hero-heading" class="home-hero__name">George P. Burdell</h1>
+      <p class="home-hero__tagline">student · tinkerer · ramblin' wreck</p>
+      <ul class="home-hero__links">
+        <li><a href="mailto:gpburdell@gatech.edu">email</a></li>
+        <li><a href="https://github.com/gpburdell">github</a></li>
+        <li><a href="https://linkedin.com/in/gpburdell">linkedin</a></li>
+      </ul>
+    </section>
+
+    <section class="home-about" aria-labelledby="about-heading">
+      <h2 id="about-heading">about</h2>
+      <p>CS senior at Georgia Tech graduating May 2026. I build things at the intersection of systems and ML — from multi-agent AWS tools to robot perception pipelines. Currently a TA for CS 3510 (Algorithms).</p>
+    </section>
+
+    <nav class="home-pages" aria-label="Site sections">
+      <a href="resume.html" class="home-pages__card">
+        <strong>resume</strong>
+        <span>experience, education &amp; skills</span>
+      </a>
+      <a href="projects.html" class="home-pages__card">
+        <strong>projects</strong>
+        <span>things I've built</span>
+      </a>
+    </nav>
+
+    <section class="home-contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">contact me</h2>
+      <form class="home-contact__form" action="#" method="post">
+        <label for="contact-name">name</label>
+        <input id="contact-name" type="text" name="name" placeholder="your name" autocomplete="name">
+
+        <label for="contact-email">email</label>
+        <input id="contact-email" type="email" name="email" placeholder="you@example.com" autocomplete="email">
+
+        <label for="contact-message">message</label>
+        <textarea id="contact-message" name="message" rows="5" placeholder="what's on your mind?"></textarea>
+
+        <button type="submit">send message</button>
+      </form>
+    </section>
+
   </main>
 
   <footer class="site-footer">
