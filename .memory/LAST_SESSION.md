@@ -1,22 +1,23 @@
 # Last Session
 
 **Date:** 2026-04-16
-**Session file:** .memory/sessions/2026-04-16-1200-home-page.md
-**Phase:** 1 — Home Page
+**Session file:** .memory/sessions/2026-04-16-1200-projects-page.md
+**Phase:** 3 — Projects Page
 
 ## What Was Done
-- Planned Phase 1 via `/plan` — designed four sections (hero, about, nav cards, contact form) and CSS section 6 rules.
-- Replaced `index.html` `<main>` placeholder with:
-  - `.home-hero` — name, tagline, email/GitHub/LinkedIn links
-  - `.home-about` — bio paragraph with dummy content
-  - `.home-pages` — CSS grid nav cards linking to `resume.html` and `projects.html`
-  - `.home-contact` — non-functional Contact Me form with name, email, message fields and submit button
-- Filled `css/style.css` Section 6 with all `.home-*` rules (hero, about, pages cards, contact form) using only existing CSS tokens.
-- Ran smoke test — 0 FAILs, 4 WARNs (all minor: print hex colors, projects.html missing h1, resume.json missing summary key, STATUS.md stale during session).
+- Delegated project design and implementation to the `portfolio-builder` subagent with full site context (CSS tokens, BEM naming, existing page patterns).
+- Agent designed 3 technically credible projects aligned with the user's background:
+  - **Distributed Trace Correlator** — Go/gRPC/OpenTelemetry/Kafka/Redis/Postgres (AWS SDE background)
+  - **Egocentric Action Anticipation** — Python/PyTorch/CUDA/Vision Transformer on EPIC-Kitchens (GT IVA Lab background)
+  - **Algorithm Complexity Visualizer** — Python/Flask/Docker/AST instrumentation (CS 3510 TA background)
+- Implemented `projects.html <main>` with 3 `<article class="projects-card">` elements, each with header, description, tech stack pills, and GitHub link.
+- Filled CSS section 8: `auto-fill` + `minmax` responsive grid, card hover transition (border + background), tag pills, focus ring on links.
+- Populated `config/projects.json` with mirrored project data.
+- Fixed accessibility issue: promoted `<h2 id="projects-heading">` → `<h1>` and updated CSS selector to match.
+- Smoke test: 0 fail / 5 warn / 28 pass.
 
 ## What's Next
-- **Phase 3** — Projects: fill `projects.html` `<main>` and CSS section 8 (card grid). Source projects from resume PDF (RoboJackets, GT IVA Lab).
-- Low-priority cleanup: replace raw `#fff`/`#000` in `@media print` block with CSS custom properties.
+None.
 
 ## Open Questions
 None.

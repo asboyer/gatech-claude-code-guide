@@ -48,6 +48,12 @@
 **Decision:** Use `<dl>` with `<div class="resume-skills__group">` wrappers, `<dt>` for category name, `<dd>` for the items string.
 **Reasoning:** A description list is the correct semantic element for term-definition pairs. More meaningful to screen readers than a nested `<ul>`, and renders inline naturally with flex layout.
 
+## D-009: Project card design — bordered flex column with tag pills
+**Session:** 2026-04-16-1200-projects-page.md
+**Context:** Phase 3 required a card layout for 3 projects with title, description, tech stack tags, and a GitHub link.
+**Decision:** Each `<article class="projects-card">` is a flex column with a bordered container (`var(--border)`), `var(--bg-soft)` background, and four zones: `__header` (title + date row), `__desc` (description paragraph), `__tags` (pill list), `__links` (footer with underline-on-hover link). The grid uses CSS `auto-fill` + `minmax` so it naturally collapses to 1 column on mobile without hardcoded breakpoint column counts. Cards get a subtle `border-color` + `background-color` transition to `var(--accent)` / `var(--bg-alt)` on hover — pure CSS, no JS.
+**Reasoning:** `auto-fill` + `minmax` is more resilient than explicit `repeat(2, 1fr)` column rules because it handles any number of cards gracefully. Flex column with `flex: 1` on `__desc` ensures the links footer always aligns to the card bottom regardless of description length. Tag pills use `var(--bg-alt)` background to stay within the Gruvbox token system and remain legible in both light and dark mode.
+
 ## D-005: Per-page configs as the single source of truth for content
 **Session:** 2026-04-15-0157-scaffolding.md
 **Context:** User asked for user-identifying info to live in a config file so a future resume-loader phase can swap real data in without rewriting HTML. Then refined: each page should have its own config.

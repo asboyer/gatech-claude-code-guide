@@ -23,7 +23,69 @@
   </header>
 
   <main id="main" class="container">
-    <!-- TODO Phase 3: build project cards from config/projects.json -->
+    <section class="projects-section" aria-labelledby="projects-heading">
+      <h1 id="projects-heading">Projects</h1>
+      <div class="projects-grid">
+
+        <article class="projects-card">
+          <header class="projects-card__header">
+            <h3 class="projects-card__title">Distributed Trace Correlator</h3>
+            <p class="projects-card__date">2025</p>
+          </header>
+          <p class="projects-card__desc">A backend service that ingests OpenTelemetry span streams over gRPC, builds causal DAGs of distributed traces in real time, and surfaces latency anomalies ranked by critical-path impact. Spans are partitioned into Kafka by trace ID to guarantee all segments land on the same consumer, then materialized into Redis with a TTL-bounded merge strategy before being flushed to Postgres for long-term querying.</p>
+          <ul class="projects-card__tags" aria-label="Tech stack">
+            <li class="projects-card__tag">Go</li>
+            <li class="projects-card__tag">gRPC</li>
+            <li class="projects-card__tag">OpenTelemetry</li>
+            <li class="projects-card__tag">Kafka</li>
+            <li class="projects-card__tag">Redis</li>
+            <li class="projects-card__tag">Postgres</li>
+          </ul>
+          <footer class="projects-card__links">
+            <a href="https://github.com/arvindinh/distributed-trace-correlator" class="projects-card__link" aria-label="GitHub repository for Distributed Trace Correlator">GitHub</a>
+          </footer>
+        </article>
+
+        <article class="projects-card">
+          <header class="projects-card__header">
+            <h3 class="projects-card__title">Egocentric Action Anticipation</h3>
+            <p class="projects-card__date">2025</p>
+          </header>
+          <p class="projects-card__desc">A video understanding model that predicts the next action a person will take 1–5 seconds into the future from first-person wearable camera footage, trained on the EPIC-Kitchens benchmark. The architecture uses a dual-stream Vision Transformer — one branch encodes short-term optical flow deltas for motion context, the other encodes RGB frames for semantic context — with a cross-attention fusion head that learns which cues dominate at different prediction horizons.</p>
+          <ul class="projects-card__tags" aria-label="Tech stack">
+            <li class="projects-card__tag">Python</li>
+            <li class="projects-card__tag">PyTorch</li>
+            <li class="projects-card__tag">OpenCV</li>
+            <li class="projects-card__tag">EPIC-Kitchens</li>
+            <li class="projects-card__tag">Vision Transformer</li>
+            <li class="projects-card__tag">CUDA</li>
+          </ul>
+          <footer class="projects-card__links">
+            <a href="https://github.com/arvindinh/egocentric-action-anticipation" class="projects-card__link" aria-label="GitHub repository for Egocentric Action Anticipation">GitHub</a>
+          </footer>
+        </article>
+
+        <article class="projects-card">
+          <header class="projects-card__header">
+            <h3 class="projects-card__title">Algorithm Complexity Visualizer</h3>
+            <p class="projects-card__date">2025</p>
+          </header>
+          <p class="projects-card__desc">A web tool that accepts Python algorithm submissions, parses them into an AST to instrument loop nesting depth and recursive call structure, then renders animated call graphs and live empirical time-complexity plots as the algorithm runs against input sizes from N=1 to N=10,000. Built for CS 3510 to give students a visual feedback loop between their implementation and its actual asymptotic behavior, with a sandboxed Docker execution environment for safe evaluation of untrusted code.</p>
+          <ul class="projects-card__tags" aria-label="Tech stack">
+            <li class="projects-card__tag">Python</li>
+            <li class="projects-card__tag">Flask</li>
+            <li class="projects-card__tag">Matplotlib</li>
+            <li class="projects-card__tag">NetworkX</li>
+            <li class="projects-card__tag">AST</li>
+            <li class="projects-card__tag">Docker</li>
+          </ul>
+          <footer class="projects-card__links">
+            <a href="https://github.com/arvindinh/algo-complexity-viz" class="projects-card__link" aria-label="GitHub repository for Algorithm Complexity Visualizer">GitHub</a>
+          </footer>
+        </article>
+
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
